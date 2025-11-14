@@ -1,0 +1,2389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RiseIT Consulting - Learn. Fail. Rise.</title>
+    <meta name="description" content="RiseIT Consulting is the first student-led IT consulting sandbox that bridges the gap between classroom learning and real industry practice.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-violet': '#240046',
+                        'purple': '#5A189A',
+                        'bright-violet': '#7B2CBF',
+                        'accent-yellow': '#EDF67D',
+                        'deep-black': '#100028',
+                    },
+                    fontFamily: {
+                        'heading': ['Inter', 'sans-serif'],
+                        'body': ['Open Sans', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'gradient-1': 'linear-gradient(to right, #240046, #5800AC)',
+                        'gradient-2': 'linear-gradient(to right, #7512D2, #3C096C, #11021E)',
+                    },
+                    animation: {
+                        'float': 'floating 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 2s infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #240046;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+            font-weight: bold;
+        }
+        
+        .card {
+            background: rgba(90, 24, 154, 0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(90, 24, 154, 0.3);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(123, 44, 191, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .card:hover::before {
+            opacity: 1;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(123, 44, 191, 0.6);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #5A189A, #7B2CBF);
+            color: white;
+            font-weight: 700;
+            padding: 1rem 2.5rem;
+            border-radius: 0.75rem;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 25px -5px rgba(90, 24, 154, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #7B2CBF, #5A189A);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px -10px rgba(90, 24, 154, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #5A189A;
+            color: #5A189A;
+            font-weight: 700;
+            padding: 1rem 2.5rem;
+            border-radius: 0.75rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #5A189A;
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+        
+        .btn-secondary:hover::before {
+            left: 0;
+        }
+        
+        .btn-secondary:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px -10px rgba(90, 24, 154, 0.4);
+        }
+        
+        .btn-accent {
+            background: linear-gradient(135deg, #EDF67D, #f4e542);
+            color: #240046;
+            font-weight: 800;
+            padding: 1rem 2.5rem;
+            border-radius: 0.75rem;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 25px -5px rgba(237, 246, 125, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-accent::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .btn-accent:hover::before {
+            left: 100%;
+        }
+        
+        .btn-accent:hover {
+            background: linear-gradient(135deg, #f4e542, #EDF67D);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px -10px rgba(237, 246, 125, 0.4);
+        }
+        
+        .section-padding {
+            padding: 6rem 1rem;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        .nav-fixed {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            background: rgba(36, 0, 70, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(90, 24, 154, 0.3);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            font-weight: 600;
+        }
+        
+        .nav-link:hover {
+            color: #EDF67D;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -6px;
+            left: 50%;
+            background: linear-gradient(90deg, #EDF67D, #f4e542);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        .text-accent-yellow {
+            color: #EDF67D;
+        }
+        
+        .bg-dark-violet {
+            background-color: #240046;
+        }
+        
+        .bg-purple {
+            background-color: #5A189A;
+        }
+        
+        .text-shadow {
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #240046 0%, #5800AC 40%, #7512D2 70%, #3C096C 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(237, 246, 125, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(123, 44, 191, 0.25) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 20%, rgba(90, 24, 154, 0.2) 0%, transparent 50%);
+            animation: pulse-slow 4s ease-in-out infinite;
+        }
+        
+        .section-gradient {
+            background: linear-gradient(135deg, #3C096C 0%, #240046 40%, #11021E 100%);
+            position: relative;
+        }
+        
+        .section-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(123, 44, 191, 0.1) 0%, transparent 60%);
+        }
+        
+        .feature-icon {
+            width: 5rem;
+            height: 5rem;
+            background: linear-gradient(135deg, #5A189A, #7B2CBF);
+            border-radius: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 15px 35px -5px rgba(90, 24, 154, 0.4);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+        }
+        
+        .feature-icon:hover::before {
+            animation: shine 0.6s ease-in-out;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .feature-icon:hover {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 25px 50px -5px rgba(90, 24, 154, 0.5);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 4rem;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, #5A189A, #7B2CBF);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 10px 25px -5px rgba(90, 24, 154, 0.4);
+            z-index: 2;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 1.25rem;
+            top: 3rem;
+            width: 3px;
+            height: calc(100% + 1rem);
+            background: linear-gradient(180deg, #5A189A, transparent);
+            z-index: 1;
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .mobile-menu {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-menu {
+                display: none;
+            }
+            .mobile-menu {
+                display: block;
+            }
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .floating {
+            animation: floating 4s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .glow {
+            box-shadow: 0 0 30px rgba(237, 246, 125, 0.3);
+        }
+        
+        .recruitment-card {
+            background: linear-gradient(135deg, rgba(90, 24, 154, 0.2), rgba(123, 44, 191, 0.1));
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+        
+        .recruitment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 1rem;
+            padding: 2px;
+            background: linear-gradient(135deg, #5A189A, #7B2CBF, #EDF67D);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .recruitment-card:hover::before {
+            opacity: 1;
+        }
+        
+        .recruitment-card:hover {
+            transform: translateY(-12px) scale(1.05);
+            box-shadow: 0 30px 60px -15px rgba(90, 24, 154, 0.4);
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #EDF67D, #f4e542);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(237, 246, 125, 0.3);
+        }
+        
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #EDF67D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(237, 246, 125, 0.2);
+        }
+        
+        .highlight-section {
+            background: linear-gradient(135deg, rgba(237, 246, 125, 0.1), rgba(123, 44, 191, 0.1));
+            border: 1px solid rgba(237, 246, 125, 0.2);
+            border-radius: 1.5rem;
+            padding: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(237, 246, 125, 0.05) 0%, transparent 70%);
+            animation: pulse-slow 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-fixed">
+        <div class="container">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-r from-purple to-bright-violet rounded-lg flex items-center justify-center glow">
+                        <span class="text-white font-bold text-xl">R</span>
+                    </div>
+                    <span class="text-white font-bold text-2xl">RiseIT</span>
+                </div>
+                
+                <div class="desktop-menu hidden md:flex items-center space-x-8">
+                    <a href="#" onclick="showPage('home')" class="nav-link">Home</a>
+                    <a href="#" onclick="showPage('about')" class="nav-link">About Us</a>
+                    <a href="#" onclick="showPage('programs')" class="nav-link">Programs</a>
+                    <a href="#" onclick="showPage('mentoring')" class="nav-link">Mentoring</a>
+                    <a href="#" onclick="showPage('risetalk')" class="nav-link">RiseTalk</a>
+                    <a href="#" onclick="showPage('partnership')" class="nav-link">Partnership</a>
+                    <a href="#" onclick="showPage('join')" class="nav-link">Join Us</a>
+                    <a href="#" onclick="showPage('contact')" class="nav-link">Contact</a>
+                </div>
+                
+                <div class="mobile-menu md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-dark-violet border-t border-purple/30">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#" onclick="showPage('home')" class="block px-3 py-2 nav-link">Home</a>
+                <a href="#" onclick="showPage('about')" class="block px-3 py-2 nav-link">About Us</a>
+                <a href="#" onclick="showPage('programs')" class="block px-3 py-2 nav-link">Programs</a>
+                <a href="#" onclick="showPage('mentoring')" class="block px-3 py-2 nav-link">Mentoring</a>
+                <a href="#" onclick="showPage('risetalk')" class="block px-3 py-2 nav-link">RiseTalk</a>
+                <a href="#" onclick="showPage('partnership')" class="block px-3 py-2 nav-link">Partnership</a>
+                <a href="#" onclick="showPage('join')" class="block px-3 py-2 nav-link">Join Us</a>
+                <a href="#" onclick="showPage('contact')" class="block px-3 py-2 nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page">
+        <!-- Hero Section -->
+        <section class="min-h-screen hero-gradient flex items-center relative overflow-hidden pt-16">
+            <div class="container relative z-10">
+                <div class="max-w-5xl mx-auto text-center">
+                    <h1 class="text-6xl md:text-8xl font-bold text-white mb-8 text-shadow floating">
+                        Learn. Fail. Rise.
+                    </h1>
+                    <h2 class="text-4xl md:text-5xl font-bold text-accent-yellow mb-10 text-shadow">
+                        Shaping Tomorrow's IT Leaders
+                    </h2>
+                    <p class="text-2xl text-gray-200 mb-12 max-w-3xl mx-auto leading-relaxed">
+                        RiseIT Consulting is the first student-led IT consulting sandbox that bridges the gap between classroom learning and real industry practice.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                        <a href="#" onclick="showPage('join')" class="btn-accent text-xl animate-pulse-slow">Join RiseIT</a>
+                        <a href="#" onclick="showPage('programs')" class="btn-secondary text-xl">Explore Programs</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Preview Section -->
+        <section class="section-padding section-gradient">
+            <div class="container">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-20">
+                        <h2 class="section-title mb-8">
+                            About RiseIT Consulting
+                        </h2>
+                        <div class="w-32 h-2 bg-accent-yellow mx-auto mb-8 rounded-full glow"></div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <h3 class="text-4xl font-bold text-accent-yellow mb-8">
+                                Why We Exist
+                            </h3>
+                            <p class="text-gray-300 mb-8 text-xl leading-relaxed">
+                                We believe every IT student deserves a space to discover their potential — to learn, fail, and rise into the next generation of digital leaders who can shape Indonesia's future.
+                            </p>
+                            
+                            <h3 class="text-4xl font-bold text-accent-yellow mb-8">
+                                How We Do It
+                            </h3>
+                            <p class="text-gray-300 mb-10 text-xl leading-relaxed">
+                                By creating a sandbox environment that blends consulting training, mentorship, and hands-on project experience, helping students apply their technical knowledge to solve real business and technology problems.
+                            </p>
+                            
+                            <a href="#" onclick="showPage('about')" class="btn-secondary text-lg">Learn More About Us</a>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-8">
+                            <div class="card text-center glow">
+                                <div class="stat-number mb-4">100+</div>
+                                <div class="text-gray-300 text-lg font-semibold">Students Mentored</div>
+                            </div>
+                            <div class="card text-center glow">
+                                <div class="stat-number mb-4">20+</div>
+                                <div class="text-gray-300 text-lg font-semibold">Projects Completed</div>
+                            </div>
+                            <div class="card text-center glow">
+                                <div class="stat-number mb-4">15+</div>
+                                <div class="text-gray-300 text-lg font-semibold">Industry Partners</div>
+                            </div>
+                            <div class="card text-center glow">
+                                <div class="stat-number mb-4">50+</div>
+                                <div class="text-gray-300 text-lg font-semibold">Events Hosted</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs Preview Section -->
+        <section class="section-padding bg-dark-violet">
+            <div class="container">
+                <div class="text-center mb-20">
+                    <h2 class="section-title mb-8">
+                        Our Programs
+                    </h2>
+                    <div class="w-32 h-2 bg-accent-yellow mx-auto mb-8 rounded-full glow"></div>
+                    <p class="text-gray-300 max-w-3xl mx-auto text-xl leading-relaxed">
+                        Discover our range of programs designed to help you grow as an IT consultant and leader.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+                    <div class="card group hover:transform hover:scale-105 transition-all duration-400">
+                        <div class="feature-icon mb-6">M</div>
+                        <h3 class="text-2xl font-bold text-white group-hover:text-accent-yellow transition-colors duration-300 mb-4">
+                            Mentoring Program
+                        </h3>
+                        <p class="text-gray-300 mb-6 text-lg">
+                            Comprehensive mentorship program for IT students to develop consulting skills and industry knowledge
+                        </p>
+                        <a href="#" onclick="showPage('mentoring')" class="inline-flex items-center text-accent-yellow hover:text-yellow-300 font-bold text-lg transition-all duration-300 group-hover:translate-x-2">
+                            Learn More →
+                        </a>
+                    </div>
+
+                    <div class="card group hover:transform hover:scale-105 transition-all duration-400">
+                        <div class="feature-icon mb-6">R</div>
+                        <h3 class="text-2xl font-bold text-white group-hover:text-accent-yellow transition-colors duration-300 mb-4">
+                            Open Recruitment
+                        </h3>
+                        <p class="text-gray-300 mb-6 text-lg">
+                            Join our team and be part of the next generation of IT consultants
+                        </p>
+                        <a href="#" onclick="showPage('join')" class="inline-flex items-center text-accent-yellow hover:text-yellow-300 font-bold text-lg transition-all duration-300 group-hover:translate-x-2">
+                            Learn More →
+                        </a>
+                    </div>
+
+                    <div class="card group hover:transform hover:scale-105 transition-all duration-400">
+                        <div class="feature-icon mb-6">T</div>
+                        <h3 class="text-2xl font-bold text-white group-hover:text-accent-yellow transition-colors duration-300 mb-4">
+                            RiseTalk
+                        </h3>
+                        <p class="text-gray-300 mb-6 text-lg">
+                            Regular events and discussions with industry experts and thought leaders
+                        </p>
+                        <a href="#" onclick="showPage('risetalk')" class="inline-flex items-center text-accent-yellow hover:text-yellow-300 font-bold text-lg transition-all duration-300 group-hover:translate-x-2">
+                            Learn More →
+                        </a>
+                    </div>
+
+                    <div class="card group hover:transform hover:scale-105 transition-all duration-400">
+                        <div class="feature-icon mb-6">P</div>
+                        <h3 class="text-2xl font-bold text-white group-hover:text-accent-yellow transition-colors duration-300 mb-4">
+                            Partnership
+                        </h3>
+                        <p class="text-gray-300 mb-6 text-lg">
+                            Collaborate with companies, universities, and organizations to create impact
+                        </p>
+                        <a href="#" onclick="showPage('partnership')" class="inline-flex items-center text-accent-yellow hover:text-yellow-300 font-bold text-lg transition-all duration-300 group-hover:translate-x-2">
+                            Learn More →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section-padding section-gradient">
+            <div class="container">
+                <div class="max-w-5xl mx-auto text-center">
+                    <div class="highlight-section">
+                        <h2 class="section-title mb-10">
+                            Ready to Start Your Journey?
+                        </h2>
+                        <p class="text-2xl text-gray-300 mb-12 leading-relaxed">
+                            Join us in shaping the future of IT consulting in Indonesia.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                            <a href="#" onclick="showPage('join')" class="btn-accent text-xl">Apply Now</a>
+                            <a href="#" onclick="showPage('contact')" class="btn-secondary text-xl">Get in Touch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Join Page (Recruitment) -->
+    <div id="join" class="page">
+        <section class="section-padding hero-gradient pt-24">
+            <div class="container">
+                <div class="max-w-5xl mx-auto text-center">
+                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-8 text-shadow">
+                        Join Our Team
+                    </h1>
+                    <p class="text-2xl text-gray-200 mb-12 leading-relaxed">
+                        Be part of the next generation of IT leaders and consultants. Shape the future of Indonesia's digital landscape with us.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recruitment Options -->
+        <section class="section-padding bg-dark-violet">
+            <div class="container">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-20">
+                        <h2 class="section-title mb-8">
+                            Choose Your Path
+                        </h2>
+                        <div class="w-32 h-2 bg-accent-yellow mx-auto mb-8 rounded-full glow"></div>
+                        <p class="text-gray-300 max-w-3xl mx-auto text-xl leading-relaxed">
+                            Whether you want to be mentored or join as an associate, we have the perfect opportunity for you.
+                        </p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <!-- Apply as Mentee -->
+                        <div class="recruitment-card card text-center">
+                            <div class="feature-icon mx-auto mb-8 text-3xl">🎓</div>
+                            <h3 class="text-3xl font-bold text-accent-yellow mb-6">Apply as Mentee</h3>
+                            <p class="text-gray-300 mb-8 text-lg leading-relaxed">
+                                Join our mentoring program and receive personalized guidance from industry experts. Perfect for students who want to accelerate their learning and career development.
+                            </p>
+                            
+                            <div class="text-left mb-8">
+                                <h4 class="text-xl font-semibold text-white mb-4">Benefits:</h4>
+                                <ul class="space-y-3 text-gray-300">
+                                    <li class="flex items-start">
+                                        <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                        <span>1-on-1 mentorship with industry professionals</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                        <span>Real project experience and portfolio building</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                        <span>Career guidance and networking opportunities</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                        <span>Skill development workshops and training</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="text-left mb-8">
+                                <h4 class="text-xl font-semibold text-white mb-4">Requirements:</h4>
+                                <ul class="space-y-3 text-gray-300">
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-3">•</span>
+                                        <span>IT student (semester 3+)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-3">•</span>
+                                        <span>Minimum GPA 3.0</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-3">•</span>
+                                        <span>Passionate about IT consulting</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <button onclick="showMenteeApplication()" class="btn-accent text-lg w-full">Apply as Mentee</button>
+                        </div>
+                        
+                        <!-- Apply as Associate -->
+                        <div class="recruitment-card card text-center">
+                            <div class="feature-icon mx-auto mb-8 text-3xl">💼</div>
+                            <h3 class="text-3xl font-bold text-accent-yellow mb-6">Apply as Associate</h3>
+                            <p class="text-gray-300 mb-8 text-lg leading-relaxed">
+                                Join our core team and help shape the future of RiseIT. Ideal for students who want to develop leadership skills and gain hands-on organizational experience.
+                            </p>
+                            
+                            <div class="text-left mb-8">
+                                <h4 class="text-xl font-semibold text-white mb-4">Available Positions:</h4>
+                                <ul class="space-y-3 text-gray-300">
+                                    <li class="flex items-start">
+                                        <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                        <span><strong>President:</strong> Lead strategy and operations</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                        <span><strong>Head of MedCom:</strong> Marketing & communications</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                        <span><strong>Head of People:</strong> HR & recruitment</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                        <span><strong>Head of Product:</strong> Project delivery</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="text-left mb-8">
+                                <h4 class="text-xl font-semibold text-white mb-4">Requirements:</h4>
+                                <ul class="space-y-3 text-gray-300">
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-3">•</span>
+                                        <span>IT student (semester 5+)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-3">•</span>
+                                        <span>Leadership experience preferred</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple mr-3">•</span>
+                                        <span>Strong commitment and dedication</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <button onclick="showAssociateApplication()" class="btn-primary text-lg w-full">Apply as Associate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Forms (Hidden by default) -->
+        <div id="menteeApplication" class="hidden section-padding section-gradient">
+            <div class="container">
+                <div class="max-w-4xl mx-auto">
+                    <div class="card">
+                        <h3 class="text-3xl font-bold text-accent-yellow mb-8">Mentee Application</h3>
+                        <form class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-white font-bold mb-2">First Name *</label>
+                                    <div class="relative">
+                                        <input type="text" id="firstName" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="Enter your first name" required>
+                                        <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                            <button type="button" onclick="clearInput('firstName')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="capitalizeInput('firstName')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-white font-bold mb-2">Last Name *</label>
+                                    <div class="relative">
+                                        <input type="text" id="lastName" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="Enter your last name" required>
+                                        <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                            <button type="button" onclick="clearInput('lastName')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="capitalizeInput('lastName')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-white font-bold mb-2">Email Address *</label>
+                                    <div class="relative">
+                                        <input type="email" id="email" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="Enter your email address" required>
+                                        <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                            <button type="button" onclick="clearInput('email')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="validateEmail('email')" class="text-gray-400 hover:text-white p-1" title="Validate">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-white font-bold mb-2">Phone Number *</label>
+                                    <div class="relative">
+                                        <input type="tel" id="phone" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="Enter your phone number" required>
+                                        <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                            <button type="button" onclick="clearInput('phone')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="formatPhone('phone')" class="text-gray-400 hover:text-white p-1" title="Format">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-white font-bold mb-2">University *</label>
+                                    <div class="relative">
+                                        <input type="text" id="university" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="Enter your university" required>
+                                        <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                            <button type="button" onclick="clearInput('university')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="capitalizeInput('university')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-white font-bold mb-2">Major *</label>
+                                    <div class="relative">
+                                        <input type="text" id="major" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="Enter your major" required>
+                                        <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                            <button type="button" onclick="clearInput('major')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="capitalizeInput('major')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-white font-bold mb-2">Why do you want to join our mentoring program? *</label>
+                                <div class="relative">
+                                    <textarea id="motivation" class="enhanced-textarea w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow h-32 transition-all duration-300" placeholder="Tell us your motivation and goals" required></textarea>
+                                    <div class="absolute right-2 top-2 flex flex-col gap-1">
+                                        <div class="flex gap-1">
+                                            <button type="button" onclick="alignTextarea('motivation', 'left')" class="text-gray-400 hover:text-white p-1" title="Align Left">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="alignTextarea('motivation', 'center')" class="text-gray-400 hover:text-white p-1" title="Align Center">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M7 12h10M4 18h16"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="alignTextarea('motivation', 'right')" class="text-gray-400 hover:text-white p-1" title="Align Right">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M12 12h8M4 18h16"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div class="flex gap-1">
+                                            <button type="button" onclick="clearTextarea('motivation')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="capitalizeTextarea('motivation')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="absolute bottom-2 right-2 text-xs text-gray-400">
+                                        <span id="motivation-count">0</span>/500
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn-accent text-lg w-full">Submit Application</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="associateApplication" class="hidden section-padding section-gradient">
+            <div class="container">
+                <div class="max-w-4xl mx-auto">
+                    <div class="card">
+                        <h3 class="text-3xl font-bold text-accent-yellow mb-8">Associate Application</h3>
+                        <form class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-white font-bold mb-2">First Name *</label>
+                                    <div class="relative">
+                                        <input type="text" id="assocFirstName" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="Enter your first name" required>
+                                        <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                            <button type="button" onclick="clearInput('assocFirstName')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="capitalizeInput('assocFirstName')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-white font-bold mb-2">Last Name *</label>
+                                    <div class="relative">
+                                        <input type="text" id="assocLastName" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="Enter your last name" required>
+                                        <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                            <button type="button" onclick="clearInput('assocLastName')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="capitalizeInput('assocLastName')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-white font-bold mb-2">Email Address *</label>
+                                    <div class="relative">
+                                        <input type="email" id="assocEmail" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="Enter your email address" required>
+                                        <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                            <button type="button" onclick="clearInput('assocEmail')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="validateEmail('assocEmail')" class="text-gray-400 hover:text-white p-1" title="Validate">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-white font-bold mb-2">Position Applied For *</label>
+                                    <select id="assocPosition" class="enhanced-select w-full px-4 py-3 bg-purple/20 border border-purple/30 rounded-lg text-white focus:outline-none focus:border-accent-yellow transition-all duration-300" required>
+                                        <option value="">Select a position</option>
+                                        <option value="president">President</option>
+                                        <option value="co-president">Co-President</option>
+                                        <option value="head-medcom">Head of MedCom</option>
+                                        <option value="co-head-medcom">Co-Head of MedCom</option>
+                                        <option value="head-people">Head of People</option>
+                                        <option value="head-product">Head of Product</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-white font-bold mb-2">Why do you want to join RiseIT as an associate? *</label>
+                                <div class="relative">
+                                    <textarea id="assocMotivation" class="enhanced-textarea w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow h-32 transition-all duration-300" placeholder="Tell us your motivation and what you can contribute" required></textarea>
+                                    <div class="absolute right-2 top-2 flex flex-col gap-1">
+                                        <div class="flex gap-1">
+                                            <button type="button" onclick="alignTextarea('assocMotivation', 'left')" class="text-gray-400 hover:text-white p-1" title="Align Left">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="alignTextarea('assocMotivation', 'center')" class="text-gray-400 hover:text-white p-1" title="Align Center">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M7 12h10M4 18h16"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="alignTextarea('assocMotivation', 'right')" class="text-gray-400 hover:text-white p-1" title="Align Right">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M12 12h8M4 18h16"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div class="flex gap-1">
+                                            <button type="button" onclick="clearTextarea('assocMotivation')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="capitalizeTextarea('assocMotivation')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="absolute bottom-2 right-2 text-xs text-gray-400">
+                                        <span id="assocMotivation-count">0</span>/500
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-white font-bold mb-2">Relevant Experience</label>
+                                <div class="relative">
+                                    <textarea id="assocExperience" class="enhanced-textarea w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow h-32 transition-all duration-300" placeholder="Share any relevant experience, leadership roles, or projects"></textarea>
+                                    <div class="absolute right-2 top-2 flex flex-col gap-1">
+                                        <div class="flex gap-1">
+                                            <button type="button" onclick="alignTextarea('assocExperience', 'left')" class="text-gray-400 hover:text-white p-1" title="Align Left">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="alignTextarea('assocExperience', 'center')" class="text-gray-400 hover:text-white p-1" title="Align Center">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M7 12h10M4 18h16"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="alignTextarea('assocExperience', 'right')" class="text-gray-400 hover:text-white p-1" title="Align Right">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M12 12h8M4 18h16"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div class="flex gap-1">
+                                            <button type="button" onclick="clearTextarea('assocExperience')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="capitalizeTextarea('assocExperience')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="absolute bottom-2 right-2 text-xs text-gray-400">
+                                        <span id="assocExperience-count">0</span>/500
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary text-lg w-full">Submit Application</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Other pages (About, Programs, Mentoring, RiseTalk, Partnership, Contact) remain the same but with enhanced styling -->
+    <!-- About Page -->
+    <div id="about" class="page">
+        <section class="section-padding hero-gradient pt-24">
+            <div class="container">
+                <div class="max-w-5xl mx-auto text-center">
+                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-8 text-shadow">
+                        About RiseIT Consulting
+                    </h1>
+                    <p class="text-2xl text-gray-200 mb-12 leading-relaxed">
+                        Empowering the next generation of IT leaders and consultants through hands-on experience and mentorship.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding section-gradient">
+            <div class="container">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-20">
+                        <h2 class="section-title mb-8">The Golden Circle</h2>
+                        <div class="w-32 h-2 bg-accent-yellow mx-auto mb-8 rounded-full glow"></div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-16">
+                        <div class="text-center">
+                            <div class="w-32 h-32 bg-gradient-to-r from-purple to-bright-violet rounded-full flex items-center justify-center mx-auto mb-8 glow">
+                                <span class="text-white font-bold text-4xl">WHY</span>
+                            </div>
+                            <h3 class="text-3xl font-bold text-accent-yellow mb-6">Our Purpose</h3>
+                            <p class="text-gray-300 leading-relaxed text-xl">
+                                We believe every IT student deserves a space to discover their potential — to learn, fail, and rise into the next generation of digital leaders who can shape Indonesia's future.
+                            </p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-32 h-32 bg-gradient-to-r from-purple to-bright-violet rounded-full flex items-center justify-center mx-auto mb-8 glow">
+                                <span class="text-white font-bold text-4xl">HOW</span>
+                            </div>
+                            <h3 class="text-3xl font-bold text-accent-yellow mb-6">Our Approach</h3>
+                            <p class="text-gray-300 leading-relaxed text-xl">
+                                By creating a sandbox environment that blends consulting training, mentorship, and hands-on project experience, helping students apply their technical knowledge to solve real business and technology problems.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Programs Page -->
+    <div id="programs" class="page">
+        <section class="section-padding hero-gradient pt-24">
+            <div class="container">
+                <div class="max-w-5xl mx-auto text-center">
+                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-8 text-shadow">
+                        Our Programs
+                    </h1>
+                    <p class="text-2xl text-gray-200 mb-12 leading-relaxed">
+                        Discover comprehensive programs designed to develop your IT consulting skills and accelerate your career growth.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding bg-dark-violet">
+            <div class="container">
+                <div class="max-w-6xl mx-auto">
+                    <div class="grid md:grid-cols-2 gap-10">
+                        <div class="card group hover:transform hover:scale-105 transition-all duration-400">
+                            <div class="feature-icon mb-6">M</div>
+                            <h3 class="text-2xl font-bold text-accent-yellow mb-4">Mentoring Program</h3>
+                            <p class="text-gray-300 mb-6 text-lg">
+                                Comprehensive mentorship program for IT students to develop consulting skills and industry knowledge
+                            </p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center text-gray-300">
+                                    <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                    One-on-one mentorship with industry professionals
+                                </li>
+                                <li class="flex items-center text-gray-300">
+                                    <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                    Skill development workshops
+                                </li>
+                                <li class="flex items-center text-gray-300">
+                                    <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                    Real project experience
+                                </li>
+                            </ul>
+                            <a href="#" onclick="showPage('mentoring')" class="btn-primary w-full text-lg">Learn More</a>
+                        </div>
+
+                        <div class="card group hover:transform hover:scale-105 transition-all duration-400">
+                            <div class="feature-icon mb-6">R</div>
+                            <h3 class="text-2xl font-bold text-accent-yellow mb-4">Open Recruitment</h3>
+                            <p class="text-gray-300 mb-6 text-lg">
+                                Join our team and be part of the next generation of IT consultants
+                            </p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center text-gray-300">
+                                    <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                    Various positions available
+                                </li>
+                                <li class="flex items-center text-gray-300">
+                                    <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                    Professional development opportunities
+                                </li>
+                                <li class="flex items-center text-gray-300">
+                                    <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                    Leadership training
+                                </li>
+                            </ul>
+                            <a href="#" onclick="showPage('join')" class="btn-primary w-full text-lg">Learn More</a>
+                        </div>
+
+                        <div class="card group hover:transform hover:scale-105 transition-all duration-400">
+                            <div class="feature-icon mb-6">T</div>
+                            <h3 class="text-2xl font-bold text-accent-yellow mb-4">RiseTalk</h3>
+                            <p class="text-gray-300 mb-6 text-lg">
+                                Regular events and discussions with industry experts and thought leaders
+                            </p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center text-gray-300">
+                                    <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                    Weekly speaker sessions
+                                </li>
+                                <li class="flex items-center text-gray-300">
+                                    <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                    Industry trend discussions
+                                </li>
+                                <li class="flex items-center text-gray-300">
+                                    <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                    Networking opportunities
+                                </li>
+                            </ul>
+                            <a href="#" onclick="showPage('risetalk')" class="btn-primary w-full text-lg">Learn More</a>
+                        </div>
+
+                        <div class="card group hover:transform hover:scale-105 transition-all duration-400">
+                            <div class="feature-icon mb-6">P</div>
+                            <h3 class="text-2xl font-bold text-accent-yellow mb-4">Partnership</h3>
+                            <p class="text-gray-300 mb-6 text-lg">
+                                Collaborate with companies, universities, and organizations to create impact
+                            </p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center text-gray-300">
+                                    <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                    Corporate partnerships
+                                </li>
+                                <li class="flex items-center text-gray-300">
+                                    <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                    University collaborations
+                                </li>
+                                <li class="flex items-center text-gray-300">
+                                    <span class="text-accent-yellow mr-3 text-xl">✓</span>
+                                    Community projects
+                                </li>
+                            </ul>
+                            <a href="#" onclick="showPage('partnership')" class="btn-primary w-full text-lg">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Mentoring Page -->
+    <div id="mentoring" class="page">
+        <section class="section-padding hero-gradient pt-24">
+            <div class="container">
+                <div class="max-w-5xl mx-auto text-center">
+                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-8 text-shadow">
+                        Mentoring Program
+                    </h1>
+                    <p class="text-2xl text-gray-200 mb-12 leading-relaxed">
+                        Transform your IT career with personalized mentorship from industry experts and experienced consultants.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding bg-dark-violet">
+            <div class="container">
+                <div class="max-w-6xl mx-auto">
+                    <div class="highlight-section mb-16">
+                        <div class="grid md:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <h2 class="text-3xl font-bold text-accent-yellow mb-8">
+                                    Why Join Our Mentoring Program?
+                                </h2>
+                                <p class="text-gray-300 mb-8 text-xl leading-relaxed">
+                                    Our mentoring program is designed to bridge the gap between academic knowledge and real-world industry requirements.
+                                </p>
+                                <ul class="space-y-4 mb-10">
+                                    <li class="flex items-start">
+                                        <span class="text-accent-yellow mr-4 text-2xl">✓</span>
+                                        <span class="text-gray-300 text-lg">One-on-one personalized guidance</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-accent-yellow mr-4 text-2xl">✓</span>
+                                        <span class="text-gray-300 text-lg">Real project experience</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-accent-yellow mr-4 text-2xl">✓</span>
+                                        <span class="text-gray-300 text-lg">Career development planning</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-accent-yellow mr-4 text-2xl">✓</span>
+                                        <span class="text-gray-300 text-lg">Networking opportunities</span>
+                                    </li>
+                                </ul>
+                                <a href="#" onclick="showPage('join')" class="btn-accent text-xl">Apply for Mentoring</a>
+                            </div>
+                            
+                            <div class="card">
+                                <h3 class="text-2xl font-bold text-accent-yellow mb-8">
+                                    Program Highlights
+                                </h3>
+                                <div class="space-y-6">
+                                    <div class="flex items-center">
+                                        <div class="feature-icon mr-6">3</div>
+                                        <div>
+                                            <h4 class="text-white font-bold text-xl">Months Duration</h4>
+                                            <p class="text-gray-400">Intensive mentoring program</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="feature-icon mr-6">2</div>
+                                        <div>
+                                            <h4 class="text-white font-bold text-xl">Sessions per Month</h4>
+                                            <p class="text-gray-400">Regular mentor meetings</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="feature-icon mr-6">1:1</div>
+                                        <div>
+                                            <h4 class="text-white font-bold text-xl">Personal Attention</h4>
+                                            <p class="text-gray-400">Focused mentorship</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- RiseTalk Page -->
+    <div id="risetalk" class="page">
+        <section class="section-padding hero-gradient pt-24">
+            <div class="container">
+                <div class="max-w-5xl mx-auto text-center">
+                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-8 text-shadow">
+                        RiseTalk
+                    </h1>
+                    <p class="text-2xl text-gray-200 mb-12 leading-relaxed">
+                        Engaging discussions and insights from industry experts, thought leaders, and innovators in the IT consulting world.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding bg-dark-violet">
+            <div class="container">
+                <div class="max-w-6xl mx-auto">
+                    <div class="grid md:grid-cols-2 gap-10">
+                        <div class="card glow">
+                            <span class="bg-green-500/20 text-green-400 px-4 py-2 rounded-full text-sm font-bold text-lg">Upcoming</span>
+                            <h3 class="text-2xl font-bold text-accent-yellow mt-6 mb-4">Introduction to IT Consulting</h3>
+                            <p class="text-gray-400 mb-3 text-lg">John Doe - Senior Consultant at Tech Company</p>
+                            <p class="text-gray-300 mb-6 text-lg">January 15, 2024 | 19:00 - 20:30 WIB</p>
+                            <p class="text-gray-300 mb-8 text-lg leading-relaxed">Learn the fundamentals of IT consulting and career pathways in the industry.</p>
+                            <button onclick="showRiseTalkRegistration('intro-it-consulting')" class="btn-primary w-full text-lg">Register Now</button>
+                        </div>
+                        
+                        <div class="card glow">
+                            <span class="bg-green-500/20 text-green-400 px-4 py-2 rounded-full text-sm font-bold text-lg">Upcoming</span>
+                            <h3 class="text-2xl font-bold text-accent-yellow mt-6 mb-4">Digital Transformation Strategies</h3>
+                            <p class="text-gray-400 mb-3 text-lg">Jane Smith - CTO at StartupXYZ</p>
+                            <p class="text-gray-300 mb-6 text-lg">January 22, 2024 | 19:00 - 20:30 WIB</p>
+                            <p class="text-gray-300 mb-8 text-lg leading-relaxed">Explore how companies are navigating digital transformation and the role of consultants.</p>
+                            <button onclick="showRiseTalkRegistration('digital-transformation')" class="btn-primary w-full text-lg">Register Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RiseTalk Registration Form -->
+        <div id="riseTalkRegistration" class="hidden section-padding section-gradient">
+            <div class="container">
+                <div class="max-w-4xl mx-auto">
+                    <div class="card">
+                        <div class="flex justify-between items-center mb-8">
+                            <h3 class="text-3xl font-bold text-accent-yellow">RiseTalk Registration</h3>
+                            <button onclick="closeRiseTalkRegistration()" class="text-gray-400 hover:text-white">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <div id="eventDetails" class="mb-8 p-6 bg-purple/20 rounded-lg">
+                            <!-- Event details will be populated here -->
+                        </div>
+                        
+                        <form id="riseTalkForm" class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="relative">
+                                    <input type="text" id="riseTalkFirstName" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="First Name *" required>
+                                    <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                        <button type="button" onclick="clearInput('riseTalkFirstName')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                        </button>
+                                        <button type="button" onclick="capitalizeInput('riseTalkFirstName')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="relative">
+                                    <input type="text" id="riseTalkLastName" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="Last Name *" required>
+                                    <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                        <button type="button" onclick="clearInput('riseTalkLastName')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                        </button>
+                                        <button type="button" onclick="capitalizeInput('riseTalkLastName')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="relative">
+                                    <input type="email" id="riseTalkEmail" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="Email Address *" required>
+                                    <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                        <button type="button" onclick="clearInput('riseTalkEmail')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                        </button>
+                                        <button type="button" onclick="validateEmail('riseTalkEmail')" class="text-gray-400 hover:text-white p-1" title="Validate">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="relative">
+                                    <input type="tel" id="riseTalkPhone" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="Phone Number *" required>
+                                    <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                        <button type="button" onclick="clearInput('riseTalkPhone')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                        </button>
+                                        <button type="button" onclick="formatPhone('riseTalkPhone')" class="text-gray-400 hover:text-white p-1" title="Format">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-white font-bold mb-2">University/Organization *</label>
+                                <div class="relative">
+                                    <input type="text" id="riseTalkOrganization" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="Enter your university or organization" required>
+                                    <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                        <button type="button" onclick="clearInput('riseTalkOrganization')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                        </button>
+                                        <button type="button" onclick="capitalizeInput('riseTalkOrganization')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-white font-bold mb-2">Why do you want to attend this RiseTalk? *</label>
+                                <div class="relative">
+                                    <textarea id="riseTalkMotivation" class="enhanced-textarea w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow h-32 transition-all duration-300" placeholder="Tell us your motivation for attending" required></textarea>
+                                    <div class="absolute right-2 top-2 flex flex-col gap-1">
+                                        <div class="flex gap-1">
+                                            <button type="button" onclick="alignTextarea('riseTalkMotivation', 'left')" class="text-gray-400 hover:text-white p-1" title="Align Left">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="alignTextarea('riseTalkMotivation', 'center')" class="text-gray-400 hover:text-white p-1" title="Align Center">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M7 12h10M4 18h16"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="alignTextarea('riseTalkMotivation', 'right')" class="text-gray-400 hover:text-white p-1" title="Align Right">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M12 12h8M4 18h16"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div class="flex gap-1">
+                                            <button type="button" onclick="clearTextarea('riseTalkMotivation')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                </svg>
+                                            </button>
+                                            <button type="button" onclick="capitalizeTextarea('riseTalkMotivation')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="absolute bottom-2 right-2 text-xs text-gray-400">
+                                        <span id="riseTalkMotivation-count">0</span>/500
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <input type="hidden" id="riseTalkEventId" name="eventId">
+                            
+                            <button type="submit" class="btn-accent text-lg w-full">Complete Registration</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Partnership Page -->
+    <div id="partnership" class="page">
+        <section class="section-padding hero-gradient pt-24">
+            <div class="container">
+                <div class="max-w-5xl mx-auto text-center">
+                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-8 text-shadow">
+                        Partnership Opportunities
+                    </h1>
+                    <p class="text-2xl text-gray-200 mb-12 leading-relaxed">
+                        Collaborate with RiseIT Consulting to create meaningful impact in Indonesia's IT ecosystem.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding bg-dark-violet">
+            <div class="container">
+                <div class="max-w-6xl mx-auto">
+                    <div class="grid md:grid-cols-2 gap-10">
+                        <div class="card glow">
+                            <h3 class="text-2xl font-bold text-accent-yellow mb-6">Corporate Partnerships</h3>
+                            <p class="text-gray-300 mb-6 text-lg leading-relaxed">Collaborate on projects, mentorship programs, and talent development.</p>
+                            <ul class="text-left text-gray-300 space-y-3 mb-8 text-lg">
+                                <li>• Project-based collaborations</li>
+                                <li>• Internship opportunities</li>
+                                <li>• Guest speaking sessions</li>
+                                <li>• Skill development workshops</li>
+                            </ul>
+                            <button onclick="showPartnershipForm()" class="btn-primary w-full text-lg">Become a Partner</button>
+                        </div>
+                        
+                        <div class="card glow">
+                            <h3 class="text-2xl font-bold text-accent-yellow mb-6">University Collaborations</h3>
+                            <p class="text-gray-300 mb-6 text-lg leading-relaxed">Partner with educational institutions to bridge academia and industry.</p>
+                            <ul class="text-left text-gray-300 space-y-3 mb-8 text-lg">
+                                <li>• Curriculum development</li>
+                                <li>• Joint research projects</li>
+                                <li>• Career development workshops</li>
+                                <li>• Student exchange programs</li>
+                            </ul>
+                            <button onclick="showPartnershipForm()" class="btn-primary w-full text-lg">Collaborate With Us</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partnership Form -->
+        <div id="partnershipForm" class="hidden section-padding section-gradient">
+            <div class="container">
+                <div class="max-w-4xl mx-auto">
+                    <div class="card">
+                        <h3 class="text-3xl font-bold text-accent-yellow mb-8">Start a Partnership</h3>
+                        <form class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="relative">
+                                    <input type="text" id="orgName" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="Organization Name">
+                                    <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                        <button type="button" onclick="clearInput('orgName')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                        </button>
+                                        <button type="button" onclick="capitalizeInput('orgName')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="relative">
+                                    <input type="text" id="industry" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="Industry">
+                                    <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                        <button type="button" onclick="clearInput('industry')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                        </button>
+                                        <button type="button" onclick="capitalizeInput('industry')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="relative">
+                                    <input type="text" id="contactPerson" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="Contact Person">
+                                    <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                        <button type="button" onclick="clearInput('contactPerson')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                        </button>
+                                        <button type="button" onclick="capitalizeInput('contactPerson')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="relative">
+                                    <input type="email" id="partnerEmail" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="Email Address">
+                                    <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                        <button type="button" onclick="clearInput('partnerEmail')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                        </button>
+                                        <button type="button" onclick="validateEmail('partnerEmail')" class="text-gray-400 hover:text-white p-1" title="Validate">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <select id="partnershipType" class="enhanced-select w-full px-4 py-3 bg-purple/20 border border-purple/30 rounded-lg text-white focus:outline-none focus:border-accent-yellow transition-all duration-300">
+                                <option value="">Select partnership type</option>
+                                <option value="corporate">Corporate Partnership</option>
+                                <option value="university">University Collaboration</option>
+                                <option value="community">Community Project</option>
+                                <option value="sponsorship">Sponsorship</option>
+                            </select>
+                            <div class="relative">
+                                <textarea id="partnershipProposal" class="enhanced-textarea w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow h-32 transition-all duration-300" placeholder="Partnership Proposal" rows="4"></textarea>
+                                <div class="absolute right-2 top-2 flex flex-col gap-1">
+                                    <div class="flex gap-1">
+                                        <button type="button" onclick="alignTextarea('partnershipProposal', 'left')" class="text-gray-400 hover:text-white p-1" title="Align Left">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
+                                            </svg>
+                                        </button>
+                                        <button type="button" onclick="alignTextarea('partnershipProposal', 'center')" class="text-gray-400 hover:text-white p-1" title="Align Center">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M7 12h10M4 18h16"></path>
+                                            </svg>
+                                        </button>
+                                        <button type="button" onclick="alignTextarea('partnershipProposal', 'right')" class="text-gray-400 hover:text-white p-1" title="Align Right">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M12 12h8M4 18h16"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="flex gap-1">
+                                        <button type="button" onclick="clearTextarea('partnershipProposal')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                        </button>
+                                        <button type="button" onclick="capitalizeTextarea('partnershipProposal')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-2 right-2 text-xs text-gray-400">
+                                    <span id="partnershipProposal-count">0</span>/500
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-accent text-lg w-full">Submit Partnership Inquiry</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+        <section class="section-padding hero-gradient pt-24">
+            <div class="container">
+                <div class="max-w-5xl mx-auto text-center">
+                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-8 text-shadow">
+                        Contact Us
+                    </h1>
+                    <p class="text-2xl text-gray-200 mb-12 leading-relaxed">
+                        Get in touch with RiseIT Consulting. We're here to answer your questions and explore collaboration opportunities.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding bg-dark-violet">
+            <div class="container">
+                <div class="max-w-6xl mx-auto">
+                    <div class="grid md:grid-cols-3 gap-10 mb-16">
+                        <div class="card text-center glow">
+                            <div class="feature-icon mb-6 mx-auto">@</div>
+                            <h3 class="text-2xl font-bold text-accent-yellow mb-4">Email</h3>
+                            <p class="text-gray-300 mb-6 text-lg">riseit.consulting@gmail.com</p>
+                            <a href="mailto:riseit.consulting@gmail.com" class="btn-secondary w-full">Send Email</a>
+                        </div>
+                        
+                        <div class="card text-center glow">
+                            <div class="feature-icon mb-6 mx-auto">📍</div>
+                            <h3 class="text-2xl font-bold text-accent-yellow mb-4">Location</h3>
+                            <p class="text-gray-300 mb-6 text-lg">Jakarta, Indonesia</p>
+                        </div>
+                        
+                        <div class="card text-center glow">
+                            <div class="feature-icon mb-6 mx-auto">📱</div>
+                            <h3 class="text-2xl font-bold text-accent-yellow mb-4">Social Media</h3>
+                            <p class="text-gray-300 mb-6 text-lg">@riseit.consulting</p>
+                            <a href="https://www.instagram.com/riseit.consulting/" target="_blank" class="btn-secondary w-full">Follow Us</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="text-3xl font-bold text-accent-yellow mb-8">Send Us a Message</h3>
+                        <form class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="relative">
+                                    <input type="text" id="contactFirstName" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="First Name">
+                                    <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                        <button type="button" onclick="clearInput('contactFirstName')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                        </button>
+                                        <button type="button" onclick="capitalizeInput('contactFirstName')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="relative">
+                                    <input type="text" id="contactLastName" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="Last Name">
+                                    <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                        <button type="button" onclick="clearInput('contactLastName')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                        </button>
+                                        <button type="button" onclick="capitalizeInput('contactLastName')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <input type="email" id="contactEmail" class="enhanced-input w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow transition-all duration-300" placeholder="Email Address">
+                                <div class="absolute right-2 top-1/2 transform -translate-y-1/2 flex gap-1">
+                                    <button type="button" onclick="clearInput('contactEmail')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                    </button>
+                                    <button type="button" onclick="validateEmail('contactEmail')" class="text-gray-400 hover:text-white p-1" title="Validate">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <select id="contactSubject" class="enhanced-select w-full px-4 py-3 bg-purple/20 border border-purple/30 rounded-lg text-white focus:outline-none focus:border-accent-yellow transition-all duration-300">
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="partnership">Partnership Opportunity</option>
+                                <option value="mentoring">Mentoring Program</option>
+                                <option value="recruitment">Recruitment</option>
+                            </select>
+                            <div class="relative">
+                                <textarea id="contactMessage" class="enhanced-textarea w-full px-4 py-3 pr-20 bg-purple/20 border border-purple/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent-yellow h-32 transition-all duration-300" placeholder="Your message" rows="4"></textarea>
+                                <div class="absolute right-2 top-2 flex flex-col gap-1">
+                                    <div class="flex gap-1">
+                                        <button type="button" onclick="alignTextarea('contactMessage', 'left')" class="text-gray-400 hover:text-white p-1" title="Align Left">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"></path>
+                                            </svg>
+                                        </button>
+                                        <button type="button" onclick="alignTextarea('contactMessage', 'center')" class="text-gray-400 hover:text-white p-1" title="Align Center">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M7 12h10M4 18h16"></path>
+                                            </svg>
+                                        </button>
+                                        <button type="button" onclick="alignTextarea('contactMessage', 'right')" class="text-gray-400 hover:text-white p-1" title="Align Right">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M12 12h8M4 18h16"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="flex gap-1">
+                                        <button type="button" onclick="clearTextarea('contactMessage')" class="text-gray-400 hover:text-white p-1" title="Clear">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                        </button>
+                                        <button type="button" onclick="capitalizeTextarea('contactMessage')" class="text-gray-400 hover:text-white p-1" title="Capitalize">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-2 right-2 text-xs text-gray-400">
+                                    <span id="contactMessage-count">0</span>/500
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-accent text-lg w-full">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-deep-black border-t border-purple/30" style="background-color: #100028;">
+        <div class="container section-padding">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-r from-purple to-bright-violet rounded-lg flex items-center justify-center glow">
+                            <span class="text-white font-bold text-xl">R</span>
+                        </div>
+                        <span class="text-white font-bold text-2xl">RiseIT</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md text-lg leading-relaxed">
+                        RiseIT Consulting is the first student-led IT consulting sandbox that bridges the gap between classroom learning and real industry practice.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="https://www.instagram.com/riseit.consulting/" target="_blank" class="text-gray-400 hover:text-accent-yellow transition-colors duration-300">
+                            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:riseit.consulting@gmail.com" class="text-gray-400 hover:text-accent-yellow transition-colors duration-300">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-bold mb-6 text-lg">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" onclick="showPage('about')" class="text-gray-400 hover:text-accent-yellow transition-colors duration-300 text-lg">About Us</a></li>
+                        <li><a href="#" onclick="showPage('programs')" class="text-gray-400 hover:text-accent-yellow transition-colors duration-300 text-lg">Programs</a></li>
+                        <li><a href="#" onclick="showPage('mentoring')" class="text-gray-400 hover:text-accent-yellow transition-colors duration-300 text-lg">Mentoring</a></li>
+                        <li><a href="#" onclick="showPage('join')" class="text-gray-400 hover:text-accent-yellow transition-colors duration-300 text-lg">Join Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-bold mb-6 text-lg">Contact</h3>
+                    <ul class="space-y-3">
+                        <li class="text-gray-400 text-lg">Email: riseit.consulting@gmail.com</li>
+                        <li class="text-gray-400 text-lg">Instagram: @riseit.consulting</li>
+                        <li><a href="#" onclick="showPage('contact')" class="text-accent-yellow hover:text-yellow-300 transition-colors duration-300 text-lg font-semibold">Contact Form →</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-purple/30 mt-12 pt-8 text-center">
+                <p class="text-gray-400 text-lg">
+                    © 2024 RiseIT Consulting. All rights reserved. | Learn. Fail. Rise.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page navigation with simple, clean transitions
+        let currentPage = 'home';
+        
+        function showPage(pageId) {
+            // Prevent clicking the same page
+            if (currentPage === pageId) {
+                return;
+            }
+            
+            const currentPageElement = document.getElementById(currentPage);
+            const nextPageElement = document.getElementById(pageId);
+            
+            // Ensure target page exists
+            if (!nextPageElement) {
+                return;
+            }
+            
+            // Hide current page immediately
+            if (currentPageElement) {
+                currentPageElement.style.display = 'none';
+                currentPageElement.classList.remove('active');
+            }
+            
+            // Show new page immediately
+            nextPageElement.style.display = 'block';
+            nextPageElement.classList.add('active');
+            
+            // Update current page
+            currentPage = pageId;
+            
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu) {
+                mobileMenu.classList.add('hidden');
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Show application forms
+        function showMenteeApplication() {
+            document.getElementById('menteeApplication').classList.remove('hidden');
+            document.getElementById('associateApplication').classList.add('hidden');
+            document.getElementById('menteeApplication').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showAssociateApplication() {
+            document.getElementById('associateApplication').classList.remove('hidden');
+            document.getElementById('menteeApplication').classList.add('hidden');
+            document.getElementById('associateApplication').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showPartnershipForm() {
+            document.getElementById('partnershipForm').classList.remove('hidden');
+            document.getElementById('partnershipForm').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // RiseTalk registration functions
+        const riseTalkEvents = {
+            'intro-it-consulting': {
+                title: 'Introduction to IT Consulting',
+                speaker: 'John Doe - Senior Consultant at Tech Company',
+                date: 'January 15, 2024',
+                time: '19:00 - 20:30 WIB',
+                description: 'Learn the fundamentals of IT consulting and career pathways in the industry.'
+            },
+            'digital-transformation': {
+                title: 'Digital Transformation Strategies',
+                speaker: 'Jane Smith - CTO at StartupXYZ',
+                date: 'January 22, 2024',
+                time: '19:00 - 20:30 WIB',
+                description: 'Explore how companies are navigating digital transformation and the role of consultants.'
+            }
+        };
+
+        function showRiseTalkRegistration(eventId) {
+            const event = riseTalkEvents[eventId];
+            const eventDetails = document.getElementById('eventDetails');
+            const eventIdField = document.getElementById('riseTalkEventId');
+            
+            eventDetails.innerHTML = `
+                <h4 class="text-xl font-bold text-accent-yellow mb-3">${event.title}</h4>
+                <p class="text-gray-300 mb-2"><strong>Speaker:</strong> ${event.speaker}</p>
+                <p class="text-gray-300 mb-2"><strong>Date:</strong> ${event.date}</p>
+                <p class="text-gray-300 mb-2"><strong>Time:</strong> ${event.time}</p>
+                <p class="text-gray-300">${event.description}</p>
+            `;
+            
+            eventIdField.value = eventId;
+            document.getElementById('riseTalkRegistration').classList.remove('hidden');
+            document.getElementById('riseTalkRegistration').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function closeRiseTalkRegistration() {
+            document.getElementById('riseTalkRegistration').classList.add('hidden');
+            document.getElementById('riseTalkForm').reset();
+        }
+
+        // Enhanced input functions
+        function clearInput(inputId) {
+            document.getElementById(inputId).value = '';
+            document.getElementById(inputId).focus();
+        }
+
+        function capitalizeInput(inputId) {
+            const input = document.getElementById(inputId);
+            const words = input.value.toLowerCase().split(' ');
+            const capitalizedWords = words.map(word => {
+                return word.charAt(0).toUpperCase() + word.slice(1);
+            });
+            input.value = capitalizedWords.join(' ');
+        }
+
+        function validateEmail(inputId) {
+            const input = document.getElementById(inputId);
+            const email = input.value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (emailRegex.test(email)) {
+                input.style.borderColor = '#10b981';
+                input.style.boxShadow = '0 0 0 3px rgba(16, 185, 129, 0.1)';
+                setTimeout(() => {
+                    input.style.borderColor = '';
+                    input.style.boxShadow = '';
+                }, 2000);
+            } else {
+                input.style.borderColor = '#ef4444';
+                input.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
+                setTimeout(() => {
+                    input.style.borderColor = '';
+                    input.style.boxShadow = '';
+                }, 2000);
+            }
+        }
+
+        function formatPhone(inputId) {
+            const input = document.getElementById(inputId);
+            let phone = input.value.replace(/\D/g, '');
+            
+            if (phone.length > 0) {
+                if (phone.length <= 3) {
+                    phone = phone;
+                } else if (phone.length <= 7) {
+                    phone = phone.slice(0, 3) + '-' + phone.slice(3);
+                } else {
+                    phone = phone.slice(0, 3) + '-' + phone.slice(3, 7) + '-' + phone.slice(7, 11);
+                }
+            }
+            
+            input.value = phone;
+        }
+
+        function clearTextarea(textareaId) {
+            document.getElementById(textareaId).value = '';
+            document.getElementById(textareaId).focus();
+            updateCharCount(textareaId);
+        }
+
+        function capitalizeTextarea(textareaId) {
+            const textarea = document.getElementById(textareaId);
+            const sentences = textarea.value.split('. ');
+            const capitalizedSentences = sentences.map(sentence => {
+                if (sentence.trim() === '') return sentence;
+                return sentence.charAt(0).toUpperCase() + sentence.slice(1);
+            });
+            textarea.value = capitalizedSentences.join('. ');
+            updateCharCount(textareaId);
+        }
+
+        function alignTextarea(textareaId, alignment) {
+            const textarea = document.getElementById(textareaId);
+            textarea.style.textAlign = alignment;
+        }
+
+        function updateCharCount(textareaId) {
+            const textarea = document.getElementById(textareaId);
+            const countElement = document.getElementById(textareaId + '-count');
+            if (countElement) {
+                const count = textarea.value.length;
+                countElement.textContent = count;
+                
+                if (count > 500) {
+                    countElement.style.color = '#ef4444';
+                } else if (count > 400) {
+                    countElement.style.color = '#f59e0b';
+                } else {
+                    countElement.style.color = '#9ca3af';
+                }
+            }
+        }
+
+        // Form submission handlers with API integration
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(this);
+                const submitButton = this.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
+                
+                // Show loading state
+                submitButton.textContent = 'Submitting...';
+                submitButton.disabled = true;
+                
+                try {
+                    let endpoint = '';
+                    let data = {};
+                    
+                    // Determine which form is being submitted
+                    if (this.id === 'riseTalkForm') {
+                        endpoint = '/api/risetalk-registration';
+                        data = {
+                            eventId: document.getElementById('riseTalkEventId').value,
+                            firstName: document.getElementById('riseTalkFirstName').value,
+                            lastName: document.getElementById('riseTalkLastName').value,
+                            email: document.getElementById('riseTalkEmail').value,
+                            phone: document.getElementById('riseTalkPhone').value,
+                            organization: document.getElementById('riseTalkOrganization').value,
+                            motivation: document.getElementById('riseTalkMotivation').value
+                        };
+                    } else if (this.closest('#menteeApplication')) {
+                        endpoint = '/api/mentee-application';
+                        data = {
+                            firstName: document.getElementById('firstName').value,
+                            lastName: document.getElementById('lastName').value,
+                            email: document.getElementById('email').value,
+                            phone: document.getElementById('phone').value,
+                            university: document.getElementById('university').value,
+                            major: document.getElementById('major').value,
+                            motivation: document.getElementById('motivation').value
+                        };
+                    } else if (this.closest('#associateApplication')) {
+                        endpoint = '/api/associate-application';
+                        data = {
+                            firstName: document.getElementById('assocFirstName').value,
+                            lastName: document.getElementById('assocLastName').value,
+                            email: document.getElementById('assocEmail').value,
+                            positionAppliedFor: document.getElementById('assocPosition').value,
+                            motivation: document.getElementById('assocMotivation').value,
+                            relevantExperience: document.getElementById('assocExperience').value
+                        };
+                    } else if (this.closest('#partnershipForm')) {
+                        endpoint = '/api/partnership-inquiry';
+                        data = {
+                            organizationName: document.getElementById('orgName').value,
+                            industry: document.getElementById('industry').value,
+                            contactPerson: document.getElementById('contactPerson').value,
+                            email: document.getElementById('partnerEmail').value,
+                            partnershipType: document.getElementById('partnershipType').value,
+                            proposal: document.getElementById('partnershipProposal').value
+                        };
+                    } else if (this.closest('#contact') && this.querySelector('#contactSubject')) {
+                        endpoint = '/api/contact-message';
+                        data = {
+                            firstName: document.getElementById('contactFirstName').value,
+                            lastName: document.getElementById('contactLastName').value,
+                            email: document.getElementById('contactEmail').value,
+                            subject: document.getElementById('contactSubject').value,
+                            message: document.getElementById('contactMessage').value
+                        };
+                    }
+                    
+                    if (endpoint) {
+                        // For demo purposes, we'll simulate API call
+                        // In production, this would be: const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+                        
+                        // Simulate API call delay
+                        await new Promise(resolve => setTimeout(resolve, 1500));
+                        
+                        // Show success message
+                        showNotification('success', 'Thank you for your submission! We will get back to you soon.');
+                        
+                        // Reset form
+                        this.reset();
+                        
+                        // Reset character counts
+                        this.querySelectorAll('[id$="-count"]').forEach(countElement => {
+                            countElement.textContent = '0';
+                            countElement.style.color = '#9ca3af';
+                        });
+                        
+                        // Close RiseTalk registration if open
+                        if (this.id === 'riseTalkForm') {
+                            closeRiseTalkRegistration();
+                        }
+                    }
+                    
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    showNotification('error', 'An error occurred. Please try again later.');
+                } finally {
+                    // Reset button state
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                }
+            });
+        });
+
+        // Notification system
+        function showNotification(type, message) {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg transform transition-all duration-300 ${
+                type === 'success' ? 'bg-green-500' : 'bg-red-500'
+            } text-white`;
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        ${type === 'success'
+                            ? '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>'
+                            : '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>'
+                        }
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm font-medium">${message}</p>
+                    </div>
+                    <div class="ml-auto pl-3">
+                        <button onclick="this.parentElement.parentElement.parentElement.remove()" class="text-white hover:text-gray-200">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => notification.remove(), 300);
+            }, 5000);
+        }
+
+        // Add smooth scroll behavior
+        document.documentElement.style.scrollBehavior = 'smooth';
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Initialize enhanced inputs and textareas
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize home page
+            const homePage = document.getElementById('home');
+            if (homePage) {
+                homePage.style.display = 'block';
+                homePage.classList.add('active');
+            }
+            
+            // Observe all cards for animation
+            document.querySelectorAll('.card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+
+            // Add character count listeners to textareas
+            document.querySelectorAll('textarea[id]').forEach(textarea => {
+                textarea.addEventListener('input', () => updateCharCount(textarea.id));
+                updateCharCount(textarea.id);
+            });
+
+            // Add focus effects to enhanced inputs
+            document.querySelectorAll('.enhanced-input, .enhanced-textarea, .enhanced-select').forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.style.transform = 'scale(1.02)';
+                    this.style.boxShadow = '0 0 0 3px rgba(237, 246, 125, 0.1)';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.style.transform = '';
+                    this.style.boxShadow = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

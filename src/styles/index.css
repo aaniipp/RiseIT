@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Open Sans', 'Nunito', sans-serif;
+    @apply bg-dark-violet text-white;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', 'Poppins', sans-serif;
+    @apply font-bold;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-purple hover:bg-bright-violet text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border-2 border-purple hover:bg-purple text-purple hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300;
+  }
+  
+  .btn-accent {
+    @apply bg-accent-yellow hover:bg-yellow-300 text-dark-violet font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-purple to-bright-violet bg-clip-text text-transparent;
+  }
+  
+  .card {
+    @apply bg-purple/10 backdrop-blur-sm border border-purple/20 rounded-lg p-6 hover:border-purple/40 transition-all duration-300;
+  }
+  
+  .section-padding {
+    @apply py-16 px-4;
+  }
+  
+  .container {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .backdrop-blur {
+    backdrop-filter: blur(10px);
+  }
+}

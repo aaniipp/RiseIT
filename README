@@ -1,0 +1,206 @@
+riseit-website/
+├── public/
+│   ├── index.html            # Root HTML template
+│   ├── favicon.ico
+│   └── assets/
+│       ├── logo.png
+│       ├── team/
+│       ├── gradients/
+│       └── icons/
+│
+├── src/
+│   ├── components/           # Reusable UI components (Navbar, Footer, Card, etc)
+│   │   ├── Navbar.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Button.jsx
+│   │   ├── ProgramCard.jsx
+│   │   └── TeamCard.jsx
+│   │
+│   ├── pages/                # Main pages
+│   │   ├── Home.jsx
+│   │   ├── About.jsx
+│   │   ├── Programs.jsx
+│   │   ├── Mentoring.jsx
+│   │   ├── RiseTalk.jsx
+│   │   ├── Partnership.jsx
+│   │   ├── Join.jsx
+│   │   └── Contact.jsx
+│   │
+│   ├── styles/               # Global + custom CSS files
+│   │   ├── index.css
+│   │   ├── tailwind.css
+│   │   └── gradient.css
+│   │
+│   ├── App.jsx               # Main app wrapper
+│   ├── main.jsx              # Entry point (Vite/ReactDOM.render)
+│   ├── router.jsx            # React Router setup (optional)
+│   └── data/                 # JSON/static data (team, events, etc)
+│       ├── teamData.js
+│       ├── programData.js
+│       └── risetalkData.js
+│
+├── .gitignore
+├── package.json
+├── tailwind.config.js
+├── postcss.config.js
+└── README.md
+
+
+🌐 RiseIT Consulting Website
+“Learn. Fail. Rise. — Shaping Tomorrow’s IT Leaders.”
+🚀 About RiseIT Consulting
+
+RiseIT Consulting is the first student-led IT consulting sandbox that bridges the gap between classroom learning and real industry practice — empowering the next generation of IT leaders and consultants.
+
+We aim to equip tech-driven students with the consulting mindset, problem-solving skills, and professional exposure they need to make an impact in Indonesia’s digital future.
+
+🧭 The Golden Circle
+💛 WHY
+
+We believe every IT student deserves a space to discover their potential — to learn, fail, and rise into the next generation of digital leaders who can shape Indonesia’s future.
+
+⚙️ HOW
+
+By creating a sandbox environment that blends consulting training, mentorship, and hands-on project experience, helping students apply their technical knowledge to solve real business and technology problems.
+
+👥 Team Structure
+| Role                  | Description                                             |
+| --------------------- | ------------------------------------------------------- |
+| **President**         | Leads RiseIT strategy and operations.                   |
+| **Co-President**      | Supports president in coordination and decision-making. |
+| **Head of MedCom**    | Manages branding, marketing, and communications.        |
+| **Co-Head of MedCom** | Assists MedCom in content & design.                     |
+| **Head of People**    | Oversees recruitment and internal management.           |
+| **Head of Product**   | Ensures delivery of projects and program execution.     |
+
+🧩 Website Overview
+
+The RiseIT website serves as a digital home and information hub for all activities and initiatives.
+It aims to attract students, mentors, and partners who share the same mission to grow Indonesia’s IT consulting ecosystem.
+
+website section
+Home — Hero section, tagline, and CTA.
+About Us — Golden Circle (Why & How) + Team intro.
+Programs — Mentoring, Open Recruitment, RiseTalk, Partnership.
+Mentoring — Detailed info from RiseIT Mentee Guide
+
+RiseTalk — Events & discussions.
+
+Partnership — Collaboration & inquiry form.
+
+Join Us — Open recruitment section.
+
+Contact — Socials and contact info.
+
+🔖 Main Sections
+
+Home
+
+Hero banner with tagline and gradient theme.
+
+Short “About RiseIT” section.
+
+CTA to join or explore programs.
+
+About Us
+
+Golden Circle (Why, How).
+
+Team introduction and photos.
+
+Programs
+
+Mentoring Program (for mentees & mentors).
+
+Open Recruitment.
+
+RiseTalk (events & discussions).
+
+Partnership initiatives.
+
+Mentoring Page
+
+Detailed info for mentee recruitment based on this Google Doc
+.
+
+Includes eligibility, timeline, benefits, and registration link.
+
+RiseTalk
+
+List of upcoming and past sessions.
+
+Embedded form for registration.
+
+Partnership
+
+Explanation of collaboration opportunities (with companies, mentors, universities).
+
+Contact form or partnership inquiry CTA.
+
+Join Us
+
+Open recruitment section.
+
+Application forms and timeline.
+
+Contact
+
+Email and social media links.
+
+Instagram: @riseitconsulting
+
+🎨 Design System
+🎨 Color Palette
+| Color         | HEX                           | Usage                |
+| ------------- | ----------------------------- | -------------------- |
+| Dark Violet   | `#240046`                     | Background / Header  |
+| Purple        | `#5A189A`                     | Buttons / Highlights |
+| Bright Violet | `#7B2CBF`                     | Hover states         |
+| Gradient 1    | `#240046 → #5800AC`           | Hero background      |
+| Gradient 2    | `#7512D2 → #3C096C → #11021E` | Section background   |
+| Accent Yellow | `#EDF67D`                     | Highlight / CTA      |
+| Deep Black    | `#100028`                     | Footer / Contrast    |
+
+
+Heading font: Poppins / Inter (bold, modern, confident)
+
+Body font: Open Sans / Nunito (clear, approachable)
+
+Font hierarchy:
+
+H1: 36–48px
+
+H2: 28–32px
+
+Paragraph: 16–18px
+
+🧱 Tech Stack (Suggested)
+| Category         | Tool                         |
+| ---------------- | ---------------------------- |
+| Framework        | React.js (Vite or CRA)       |
+| Styling          | Tailwind CSS + Custom CSS    |
+| Structure        | HTML components inside React |
+| State Management | React Hooks                  |
+| Version Control  | Git + GitHub                 |
+| Deployment       | Vercel / Netlify             |
+
+
+🗓️ Development Roadmap
+Phase	Description	Status
+1	Create landing page & navbar	⏳ Pending
+2	Build “About Us” + Golden Circle section	⏳ Pending
+3	Develop “Programs” & “Mentoring” pages	⏳ Pending
+4	Add “Partnership” & “RiseTalk” pages	⏳ Pending
+5	Deploy initial version (Vercel)	⏳ Pending
+6	Add dynamic content / CMS integration (optional)	⏳ Pending
+📬 Contact
+
+For inquiries or collaboration:
+
+📧 riseit.consulting@gmail.com
+
+📸 Instagram: @riseitconsulting
+
+✨ Tagline
+
+Learn. Fail. Rise. — Shaping Tomorrow’s IT Leaders.
